@@ -18,10 +18,8 @@ services:
   mysql:
     image: mysql:5.7 # Välj en MySQL-version
     platform: linux/amd64
-    environment:
-      MYSQL_ROOT_PASSWORD: Bask1ball!
-      MYSQL_DATABASE: banksite_db
-      MYSQL_USER: ubuntu
+    env_file:
+      - .env
     ports:
       - "3307:3306" # Porten som MySQL-servern lyssnar på
     volumes:
