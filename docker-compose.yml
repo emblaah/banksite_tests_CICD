@@ -1,0 +1,31 @@
+services:
+  nextjs:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+   
+  express:
+    build: ./backend
+    ports:
+      - "3004:3004"
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7 # Välj en MySQL-version
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: Bask1ball!
+      MYSQL_DATABASE: banksite_db
+      MYSQL_USER: ubuntu
+    ports:
+      - "3307:3306" # Porten som MySQL-servern lyssnar på
+    volumes:
+      - mysql-data:/var/lib/mysql-docker
+
+volumes:
+  mysql-data:
