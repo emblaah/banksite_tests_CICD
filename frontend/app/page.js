@@ -13,7 +13,7 @@ export default function Home() {
     createdPassword: "",
   });
 
-  // deposit, withdrawal, balance states
+  // deposit, withdrawal, balance states 1
   const [balance, setBalance] = useState(0);
   const [amount, setAmount] = useState("");
 
